@@ -1,0 +1,746 @@
+{
+  "version": 10,
+  "algorithm": "FOC",
+  "description": "",
+  "workBenchVersion": "6.4.2",
+  "workBenchVersionFileCreation": "6.4.2",
+  "hardwares": {
+    "type": "INVERTER",
+    "inverter": {
+      "hardwareFamily": "INVERTER",
+      "id": "user.Teste_G474_3Timer",
+      "label": "Teste_G474_3Timer",
+      "description": "",
+      "compatibility": [
+        "FOC"
+      ],
+      "descVersion": 4,
+      "contentVersion": "1.0"
+    },
+    "control": {
+      "hardwareFamily": "CONTROL",
+      "mcu": {
+        "id": "STM32G474CBTx"
+      },
+      "clockSource": "24_crystal",
+      "clockFrequency": 170,
+      "connectors": [],
+      "features": [
+        {
+          "type": "ElectronicSpeedControl",
+          "name": "ElectronicSpeedControl",
+          "hwVariants": [
+            {
+              "type": "ESCPWMControl",
+              "signals": {
+                "PWM_ESC_INPUT": [
+                  {
+                    "name": "PA12",
+                    "help": {},
+                    "cost": 0
+                  }
+                ]
+              },
+              "cost": 0
+            }
+          ]
+        },
+        {
+          "name": "SerialPortCommunication",
+          "type": "SerialPortCommunication",
+          "hwVariants": [
+            {
+              "type": "Uart2WiresCommunication",
+              "signals": {
+                "UART_TX": [
+                  {
+                    "name": "PB6",
+                    "help": {},
+                    "cost": 0
+                  }
+                ],
+                "UART_RX": [
+                  {
+                    "name": "PB7",
+                    "help": {},
+                    "cost": 0
+                  }
+                ]
+              },
+              "cost": 0
+            }
+          ]
+        }
+      ],
+      "id": "Teste_G474_3Timer",
+      "label": "Teste_G474_3Timer",
+      "contentVersion": "1.0",
+      "compatibility": [
+        "FOC"
+      ],
+      "descVersion": 4,
+      "description": "",
+      "link": ""
+    },
+    "power": [
+      {
+        "motorDrives": [
+          {
+            "name": "M1",
+            "maxRatedVoltage": 25.2,
+            "minRatedVoltage": 7.4,
+            "maxRatedCurrent": 60,
+            "maxRatedPower": 1500,
+            "features": [
+              {
+                "type": "PhaseVoltageGeneration",
+                "name": "PhaseVoltageGeneration",
+                "hwVariants": [
+                  {
+                    "type": "DrivingHighSidesAndOneEnable",
+                    "signals": {
+                      "PWM_CHU_H": [
+                        {
+                          "name": "PA8",
+                          "help": {},
+                          "cost": 0
+                        }
+                      ],
+                      "PWM_CHV_H": [
+                        {
+                          "name": "PA9",
+                          "help": {},
+                          "cost": 0
+                        }
+                      ],
+                      "PWM_CHW_H": [
+                        {
+                          "name": "PA10",
+                          "help": {},
+                          "cost": 0
+                        }
+                      ],
+                      "PWM_EN": [
+                        {
+                          "name": "PA11",
+                          "help": {},
+                          "cost": 0
+                        }
+                      ]
+                    },
+                    "deadTime": 0,
+                    "highSideSwitchesDrivingPolarity": "Active high",
+                    "enableDrivingPolarity": "Active high",
+                    "cost": 0
+                  }
+                ],
+                "driverName": "DRV8305",
+                "driverPN": "1",
+                "tNoise": 500,
+                "minDeadTime": 332,
+                "maxSwitchingFreq": 200
+              },
+              {
+                "type": "CurrentSensing",
+                "name": "CurrentSensing",
+                "hwVariants": [
+                  {
+                    "type": "ThreeShunt_AmplifiedCurrents",
+                    "signals": {
+                      "CURRENT_AMPL_U": [
+                        {
+                          "name": "PB0",
+                          "help": {},
+                          "cost": 0
+                        }
+                      ],
+                      "CURRENT_AMPL_V": [
+                        {
+                          "name": "PA6",
+                          "help": {},
+                          "cost": 0
+                        }
+                      ],
+                      "CURRENT_AMPL_W": [
+                        {
+                          "name": "PA3",
+                          "help": {},
+                          "cost": 0
+                        }
+                      ]
+                    },
+                    "shuntResistor": 0.0005,
+                    "amplifyingNetworkImax": 82.5,
+                    "amplifyingNetworkVm": 3.3,
+                    "amplifyingNetworkPrating": 5,
+                    "opAmpGain": 40,
+                    "offsetNetworkAttenuation": 1,
+                    "polarizationOffset": 1.65,
+                    "cost": 0
+                  }
+                ],
+                "tRise": 1200
+              },
+              {
+                "type": "PhaseVoltageSensing",
+                "name": "PhaseVoltageSensing",
+                "hwVariants": [
+                  {
+                    "type": "ThreePhaseVoltageDividersFiltered",
+                    "signals": {
+                      "VOLTAGE_DIV_FILT_U": [
+                        {
+                          "name": "PB1",
+                          "help": {},
+                          "cost": 0
+                        }
+                      ],
+                      "VOLTAGE_DIV_FILT_V": [
+                        {
+                          "name": "PA1",
+                          "help": {},
+                          "cost": 0
+                        }
+                      ],
+                      "VOLTAGE_DIV_FILT_W": [
+                        {
+                          "name": "PA2",
+                          "help": {},
+                          "cost": 0
+                        }
+                      ]
+                    },
+                    "voltageDividerValue": 0.07448,
+                    "cutoffPulse": 2165,
+                    "cost": 0
+                  }
+                ]
+              },
+              {
+                "type": "DriverProtection",
+                "name": "DriverProtection",
+                "hwVariants": [
+                  {
+                    "type": "SingleErrorTrigger_FixedReference",
+                    "signals": {
+                      "DP_TRIGGER": [
+                        {
+                          "name": "PB10",
+                          "help": {},
+                          "cost": 0
+                        }
+                      ]
+                    },
+                    "DPSignalPolarity": "Active low",
+                    "DPTriggerFilterDuration": 2000,
+                    "cost": 0
+                  }
+                ]
+              },
+              {
+                "type": "VBusSensing",
+                "name": "VBusSensing",
+                "hwVariants": [
+                  {
+                    "type": "VBusSensing",
+                    "signals": {
+                      "VBUS": [
+                        {
+                          "name": "PA4",
+                          "help": {},
+                          "cost": 0
+                        }
+                      ]
+                    },
+                    "busVoltageDivider": 13.42,
+                    "busVoltageDividerR1": 62000,
+                    "busVoltageDividerR2": 4990,
+                    "cost": 0
+                  }
+                ],
+                "busVoltageDivider": 13.42
+              }
+            ]
+          }
+        ],
+        "hardwareFamily": "POWER",
+        "id": "Teste_G474_3Timer",
+        "compatibility": [
+          "FOC"
+        ],
+        "descVersion": 4,
+        "description": "",
+        "contentVersion": "1.0",
+        "label": "Teste_G474_3Timer",
+        "link": ""
+      }
+    ],
+    "motor": [
+      {
+        "polePairs": 7,
+        "id": "user.Generic UAV Motor",
+        "label": "Generic UAV Motor",
+        "hardwareFamily": "MOTOR",
+        "description": "For Encoder, A connected to H2 and B connected H1 ",
+        "compatibility": [
+          "FOC",
+          "sixStep"
+        ],
+        "nominalCurrent": 60,
+        "nominalDCVoltage": 25.2,
+        "rs": 0.02,
+        "ls": 0.012,
+        "magneticStructure": {
+          "type": "SM-PMSM"
+        },
+        "BEmfConstant": 2.72,
+        "inertia": 22,
+        "friction": 2.5,
+        "maxRatedSpeed": 33500,
+        "hallSensor": {
+          "sensorsDisplacement": 120,
+          "placementElectricalAngle": 244
+        },
+        "quadratureEncoder": {
+          "pulsesPerMechanicalRevolution": 1000,
+          "hasIndexPin": true
+        }
+      }
+    ],
+    "connections": [
+      {
+        "ctrlConn": 0,
+        "power": 0,
+        "drive": 0,
+        "motor": 0
+      }
+    ],
+    "constrains": {
+      "motors": [
+        {
+          "motor": "M1",
+          "features": [
+            {
+              "name": "PhaseVoltageGeneration",
+              "type": "PhaseVoltageGeneration",
+              "hwVariants": [
+                {
+                  "name": "DrivingHighSidesAndOneEnable",
+                  "swVariants": [
+                    {
+                      "name": "SingleTimerAndGPIOs",
+                      "solutions": [
+                        {
+                          "ip": [
+                            "TIM1"
+                          ],
+                          "signals": [
+                            {
+                              "name": "PWM_CHU_H",
+                              "pin": "PA8",
+                              "peripheral": "TIM1_CH1",
+                              "help": ""
+                            },
+                            {
+                              "name": "PWM_CHV_H",
+                              "pin": "PA9",
+                              "peripheral": "TIM1_CH2",
+                              "help": ""
+                            },
+                            {
+                              "name": "PWM_CHW_H",
+                              "pin": "PA10",
+                              "peripheral": "TIM1_CH3",
+                              "help": ""
+                            }
+                          ],
+                          "cost": 0
+                        }
+                      ],
+                      "independentWires": {
+                        "PWM_EN": [
+                          {
+                            "ip": "GPIO",
+                            "pin": "PA11",
+                            "peripheral": "GPIO_Output",
+                            "help": "",
+                            "cost": 0
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "CurrentSensing",
+              "type": "CurrentSensing",
+              "hwVariants": [
+                {
+                  "name": "ThreeShunt_AmplifiedCurrents",
+                  "swVariants": [
+                    {
+                      "name": "TripleADCs",
+                      "solutions": [
+                        {
+                          "ip": [
+                            "ADC2",
+                            "ADC1",
+                            "ADC3"
+                          ],
+                          "signals": [
+                            {
+                              "name": "CURRENT_AMPL_U",
+                              "pin": "PB0",
+                              "peripheral": "ADC3_IN12",
+                              "help": ""
+                            },
+                            {
+                              "name": "CURRENT_AMPL_V",
+                              "pin": "PA6",
+                              "peripheral": "ADC2_IN3",
+                              "help": ""
+                            },
+                            {
+                              "name": "CURRENT_AMPL_W",
+                              "pin": "PA3",
+                              "peripheral": "ADC1_IN4",
+                              "help": ""
+                            }
+                          ],
+                          "cost": 0
+                        }
+                      ]
+                    },
+                    {
+                      "name": "DualADCsNoSharedPhase",
+                      "solutions": [
+                        {
+                          "ip": [
+                            "ADC2",
+                            "ADC1"
+                          ],
+                          "signals": [
+                            {
+                              "name": "CURRENT_AMPL_U",
+                              "pin": "PB0",
+                              "peripheral": "ADC1_IN15",
+                              "help": ""
+                            },
+                            {
+                              "name": "CURRENT_AMPL_V",
+                              "pin": "PA6",
+                              "peripheral": "ADC2_IN3",
+                              "help": ""
+                            },
+                            {
+                              "name": "CURRENT_AMPL_W",
+                              "pin": "PA3",
+                              "peripheral": "ADC1_IN4",
+                              "help": ""
+                            }
+                          ],
+                          "cost": 0
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "PhaseVoltageSensing",
+              "type": "PhaseVoltageSensing",
+              "hwVariants": [
+                {
+                  "name": "ThreePhaseVoltageDividersFiltered",
+                  "swVariants": [
+                    {
+                      "name": "TripleADCs",
+                      "solutions": [
+                        {
+                          "ip": [
+                            "ADC2",
+                            "ADC1",
+                            "ADC3"
+                          ],
+                          "signals": [
+                            {
+                              "name": "VOLTAGE_DIV_FILT_U",
+                              "pin": "PB1",
+                              "peripheral": "ADC3_IN1",
+                              "help": ""
+                            },
+                            {
+                              "name": "VOLTAGE_DIV_FILT_V",
+                              "pin": "PA1",
+                              "peripheral": "ADC2_IN2",
+                              "help": ""
+                            },
+                            {
+                              "name": "VOLTAGE_DIV_FILT_W",
+                              "pin": "PA2",
+                              "peripheral": "ADC1_IN3",
+                              "help": ""
+                            }
+                          ],
+                          "cost": 0
+                        }
+                      ]
+                    },
+                    {
+                      "name": "DualADCsNoSharedPhase",
+                      "solutions": [
+                        {
+                          "ip": [
+                            "ADC2",
+                            "ADC1"
+                          ],
+                          "signals": [
+                            {
+                              "name": "VOLTAGE_DIV_FILT_U",
+                              "pin": "PB1",
+                              "peripheral": "ADC1_IN12",
+                              "help": ""
+                            },
+                            {
+                              "name": "VOLTAGE_DIV_FILT_V",
+                              "pin": "PA1",
+                              "peripheral": "ADC2_IN2",
+                              "help": ""
+                            },
+                            {
+                              "name": "VOLTAGE_DIV_FILT_W",
+                              "pin": "PA2",
+                              "peripheral": "ADC1_IN3",
+                              "help": ""
+                            }
+                          ],
+                          "cost": 0
+                        },
+                        {
+                          "ip": [
+                            "ADC1",
+                            "ADC3"
+                          ],
+                          "signals": [
+                            {
+                              "name": "VOLTAGE_DIV_FILT_U",
+                              "pin": "PB1",
+                              "peripheral": "ADC3_IN1",
+                              "help": ""
+                            },
+                            {
+                              "name": "VOLTAGE_DIV_FILT_V",
+                              "pin": "PA1",
+                              "peripheral": "ADC1_IN2",
+                              "help": ""
+                            },
+                            {
+                              "name": "VOLTAGE_DIV_FILT_W",
+                              "pin": "PA2",
+                              "peripheral": "ADC1_IN3",
+                              "help": ""
+                            }
+                          ],
+                          "cost": 0
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "DriverProtection",
+              "type": "DriverProtection",
+              "hwVariants": [
+                {
+                  "name": "SingleErrorTrigger_FixedReference",
+                  "swVariants": [
+                    {
+                      "name": "SingleWire",
+                      "solutions": [
+                        {
+                          "ip": [
+                            "TIM1"
+                          ],
+                          "signals": [
+                            {
+                              "name": "DP_TRIGGER",
+                              "pin": "PB10",
+                              "peripheral": "TIM1_BKIN",
+                              "help": ""
+                            }
+                          ],
+                          "cost": 0
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "VBusSensing",
+              "type": "VBusSensing",
+              "hwVariants": [
+                {
+                  "name": "VBusSensing",
+                  "swVariants": [
+                    {
+                      "name": "SingleWire",
+                      "solutions": [
+                        {
+                          "ip": [
+                            "ADC2"
+                          ],
+                          "signals": [
+                            {
+                              "name": "VBUS",
+                              "pin": "PA4",
+                              "peripheral": "ADC2_IN17",
+                              "help": ""
+                            }
+                          ],
+                          "cost": 0
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "features": [
+        {
+          "name": "ElectronicSpeedControl",
+          "type": "ElectronicSpeedControl",
+          "hwVariants": [
+            {
+              "name": "ESCPWMControl",
+              "swVariants": [
+                {
+                  "name": "SingleWire",
+                  "solutions": [
+                    {
+                      "ip": [
+                        "TIM16"
+                      ],
+                      "signals": [
+                        {
+                          "name": "PWM_ESC_INPUT",
+                          "pin": "PA12",
+                          "peripheral": "TIM16_CH1",
+                          "help": ""
+                        }
+                      ],
+                      "cost": 0
+                    },
+                    {
+                      "ip": [
+                        "TIM4"
+                      ],
+                      "signals": [
+                        {
+                          "name": "PWM_ESC_INPUT",
+                          "pin": "PA12",
+                          "peripheral": "TIM4_CH2",
+                          "help": ""
+                        }
+                      ],
+                      "cost": 0
+                    }
+                  ]
+                }
+              ],
+              "type": "ESCPWMControl"
+            }
+          ]
+        }
+      ],
+      "errors": [],
+      "warnings": [
+        "CSConnect: ThreeShunt_AmplifiedCurrents DualADCs SharedSignal",
+        "CSConnect: ThreeShunt_AmplifiedCurrents DualADCs NoSolution",
+        "CSConnect: ThreeShunt_AmplifiedCurrents SingleADC No_Unique_ADC CURRENT_AMPL_U, CURRENT_AMPL_V, CURRENT_AMPL_W"
+      ],
+      "info": [],
+      "critical": []
+    }
+  },
+  "checkList": {},
+  "details": {
+    "steps": {
+      "powerSwitches_0": {
+        "setting": {
+          "PWMFrequency": 24000,
+          "chargeBootCapDuty": "Number.NaN",
+          "chargeBootCapMs": "Number.NaN",
+          "drivingTopology": ""
+        }
+      },
+      "currentSensing_0": {
+        "executionRate": 3,
+        "topology": "",
+        "topologyData": {
+          "_tag": "3sh",
+          "ampMode": "",
+          "sensing": {
+            "amplification": "external",
+            "shuntResistor": "Number.NaN",
+            "gain": "Number.NaN",
+            "tNoise": "Number.NaN",
+            "tRise": "Number.NaN",
+            "maxModulation": "Number.NaN",
+            "samplingTime": "Number.NaN"
+          }
+        },
+        "ocpData": {
+          "enable": false
+        }
+      },
+      "applicationConfig": {
+        "freeRTOS": {
+          "enabled": false
+        },
+        "dacDebug": {
+          "enabled": false
+        },
+        "lowMemoryFootprintReg": false,
+        "motorProfiler": true,
+        "dbgMcuLoadMeasure": true
+      },
+      "motor_0": {
+        "label": "",
+        "description": "",
+        "polePairs": "Number.NaN",
+        "mmsType": "",
+        "rs": "Number.NaN",
+        "ls": "Number.NaN",
+        "mmsLd_lq_ratio": "Number.NaN",
+        "maxCurrent": "Number.NaN",
+        "maxDCVoltage": "Number.NaN",
+        "BEmfConstant": "Number.NaN",
+        "inertia": "Number.NaN",
+        "friction": "Number.NaN",
+        "maxRatedSpeed": "Number.NaN",
+        "hasHallSensor": false,
+        "hallSensor": {
+          "sensorsDisplacement": "Number.NaN",
+          "placementElectricalAngle": "Number.NaN"
+        },
+        "hasQuadratureEncoder": false,
+        "quadratureEncoder": {
+          "pulsesPerMechanicalRevolution": "Number.NaN",
+          "hasIndexPin": true
+        },
+        "nominalCurrent": "Number.NaN",
+        "nominalDCVoltage": "Number.NaN"
+      }
+    }
+  }
+}
